@@ -24,24 +24,31 @@ function playerJump() {
 }
 
 // Function to handle touch input
-function handleTouchEvent(event) {
+function handleTouchStart(event) {
     event.preventDefault(); // Prevent default behavior (e.g., scrolling)
     playerJump();
 }
 
+// Optional: Handle touch movement if needed (e.g., dragging to move)
+function handleTouchMove(event) {
+    event.preventDefault(); // Prevent default behavior (e.g., scrolling)
+    const touch = event.touches[0];
+    const player = document.getElementById('player');
+
+    // Example: Move player based on touch movement
+    player.style.left = `${touch.clientX - player.clientWidth / 2}px`;
+    player.style.top = `${touch.clientY - player.clientHeight / 2}px`;
+}
+
+// Optional: Handle touch end if needed
+function handleTouchEnd(event) {
+    // Example: Reset any touch-related states or actions
+}
+
 // Add event listeners for touch input
-document.addEventListener('touchstart', handleTouchEvent);
-
-// Optional: Handle touch movement for more complex interactions
-document.addEventListener('touchmove', (event) => {
-    // Handle touch move logic if needed
-    // Example: dragging to move the player (if applicable)
-});
-
-// Optional: Handle touch end if you need to manage touch release
-document.addEventListener('touchend', (event) => {
-    // Handle touch end logic if needed
-});
+document.addEventListener('touchstart', handleTouchStart);
+document.addEventListener('touchmove', handleTouchMove);
+document.addEventListener('touchend', handleTouchEnd);
 
 // Example function that could be called when the player collects an item
 function onItemCollected() {
