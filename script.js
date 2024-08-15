@@ -1,5 +1,5 @@
 // Initialize score
-let score = 5;
+let score = 0;
 
 // Function to update the score display
 function updateScoreDisplay() {
@@ -13,7 +13,7 @@ function increaseScore(amount) {
     updateScoreDisplay();
 }
 
-// Function to handle player jump (example for a simple game)
+// Function to handle player jump
 function playerJump() {
     const player = document.getElementById('player');
     player.classList.add('jump');
@@ -23,9 +23,25 @@ function playerJump() {
     }, 500); // Adjust the duration as needed
 }
 
-// Event listeners for touch and click
-document.addEventListener('click', playerJump);
-document.addEventListener('touchstart', playerJump);
+// Function to handle touch input
+function handleTouchEvent(event) {
+    event.preventDefault(); // Prevent default behavior (e.g., scrolling)
+    playerJump();
+}
+
+// Add event listeners for touch input
+document.addEventListener('touchstart', handleTouchEvent);
+
+// Optional: Handle touch movement for more complex interactions
+document.addEventListener('touchmove', (event) => {
+    // Handle touch move logic if needed
+    // Example: dragging to move the player (if applicable)
+});
+
+// Optional: Handle touch end if you need to manage touch release
+document.addEventListener('touchend', (event) => {
+    // Handle touch end logic if needed
+});
 
 // Example function that could be called when the player collects an item
 function onItemCollected() {
