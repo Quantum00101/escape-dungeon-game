@@ -20,12 +20,17 @@ function resetScore() {
 
 // Example game loop or event listener
 function gameLoop() {
-    // Your game logic here
-
-    // Increase the score periodically or based on game events
+    // Example: Increase score every second
     increaseScore();
 
-    // Example: call gameLoop again after a short delay
+    // Example: Simulate a condition to stop the game (e.g., if player hits obstacle)
+    // This is a placeholder for actual game logic
+    if (score >= 100) { // For demonstration, stop after score reaches 100
+        alert('You won!');
+        return; // Exit game loop
+    }
+
+    // Call gameLoop again after a short delay
     setTimeout(gameLoop, 1000); // Call gameLoop every second
 }
 
