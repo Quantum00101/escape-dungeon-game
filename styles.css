@@ -22,6 +22,7 @@ body {
     background-color: red;
     bottom: 10px;
     left: 10px;
+    transition: transform 0.5s ease; /* Smooth transition for jump */
 }
 
 /* Obstacle styling */
@@ -54,6 +55,23 @@ body {
     padding: 10px;
     border-radius: 5px;
     z-index: 1000;
+}
+
+/* Animation for player jump */
+#player.jump {
+    animation: jump 0.5s ease;
+}
+
+@keyframes jump {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-50px); /* Adjust as needed */
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
 
 /* Media query for mobile responsiveness */
