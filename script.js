@@ -1,39 +1,50 @@
 // Initialize score
-let score = 0;
+let score = 5;
 
-// Select DOM elements
-const player = document.getElementById('player');
-const obstacle = document.getElementById('obstacle');
-const scoreDisplay = document.getElementById('score');
-
-// Function to increase the score
-function increaseScore() {
-    score += 10; // Increase score by 10 for each event
-    scoreDisplay.textContent = `Score: ${score}`;
+// Function to update the score display
+function updateScoreDisplay() {
+    const scoreElement = document.getElementById('score');
+    scoreElement.textContent = `Score: ${score}`;
 }
 
-// Function to reset the score
-function resetScore() {
-    score = 0;
-    scoreDisplay.textContent = `Score: ${score}`;
+// Example function to increment the score
+function increaseScore(amount) {
+    score += amount;
+    updateScoreDisplay();
 }
 
-// Example game loop or event listener
+// Example function that could be called when the player collects an item
+function onItemCollected() {
+    increaseScore(10); // Increase score by 10 (you can adjust this value)
+}
+
+// Example game logic
+
+// Set up the game (replace this with your actual game setup code)
+function setupGame() {
+    // Example: set up event listeners or game logic that could trigger scoring
+
+    // Example: simulate item collection every 5 seconds
+    setInterval(onItemCollected, 5000);
+}
+
+// Game loop (replace with your actual game loop logic)
 function gameLoop() {
-    // Example: Increase score every second
-    increaseScore();
+    // Your main game logic goes here
 
-    // Example: Simulate a condition to stop the game (e.g., if player hits obstacle)
-    // This is a placeholder for actual game logic
-    if (score >= 100) { // For demonstration, stop after score reaches 100
-        alert('You won!');
-        return; // Exit game loop
-    }
-
-    // Call gameLoop again after a short delay
-    setTimeout(gameLoop, 1000); // Call gameLoop every second
+    // Example: Update game state, handle collisions, etc.
+    
+    // Continue game loop
+    requestAnimationFrame(gameLoop);
 }
 
 // Start the game
-resetScore(); // Initialize score
-gameLoop(); // Begin game loop
+function startGame() {
+    setupGame();
+    gameLoop();
+}
+
+// Start the game when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    startGame();
+});
