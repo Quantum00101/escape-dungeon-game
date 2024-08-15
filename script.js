@@ -7,33 +7,43 @@ function updateScoreDisplay() {
     scoreElement.textContent = `Score: ${score}`;
 }
 
-// Example function to increment the score
+// Function to increase the score
 function increaseScore(amount) {
     score += amount;
     updateScoreDisplay();
 }
 
+// Function to handle player jump (example for a simple game)
+function playerJump() {
+    const player = document.getElementById('player');
+    player.classList.add('jump');
+
+    setTimeout(() => {
+        player.classList.remove('jump');
+    }, 500); // Adjust the duration as needed
+}
+
+// Event listeners for touch and click
+document.addEventListener('click', playerJump);
+document.addEventListener('touchstart', playerJump);
+
 // Example function that could be called when the player collects an item
 function onItemCollected() {
-    increaseScore(10); // Increase score by 10 (you can adjust this value)
+    increaseScore(10); // Increase score by 10
 }
 
 // Example game logic
-
-// Set up the game (replace this with your actual game setup code)
 function setupGame() {
-    // Example: set up event listeners or game logic that could trigger scoring
-
     // Example: simulate item collection every 5 seconds
     setInterval(onItemCollected, 5000);
 }
 
-// Game loop (replace with your actual game loop logic)
+// Game loop
 function gameLoop() {
     // Your main game logic goes here
 
     // Example: Update game state, handle collisions, etc.
-    
+
     // Continue game loop
     requestAnimationFrame(gameLoop);
 }
